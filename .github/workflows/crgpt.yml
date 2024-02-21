@@ -10,11 +10,16 @@ permissions:
   packages: read
 
 jobs:
-  code-review:
-    runs-on: "ubuntu-latest"
+  run_code_review:
+    runs-on: ubuntu-latest
     steps:
-      - name: "Code Review"
-        uses: CI-T-HyperX/flow-actions/pull-request-review@main
+      - uses: actions/checkout@v3
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          openai-api-key: ${{ secrets.OPENAI_API_KEY }}
+          fetch-depth: 0
+
+      - name: Code Review GPT
+        uses: mattzcarey/code-review-gpt@v0.1.4-alpha
+        with:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          MODEL: "gpt-3.5-turbo"
+          GITHUB_TOKEN: ${{ github.token }}
