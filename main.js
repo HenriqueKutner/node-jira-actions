@@ -12,6 +12,7 @@ function subtract(a, b) {
     result--;
     b--;
   }
+  console.log("test");
   return result;
 }
 
