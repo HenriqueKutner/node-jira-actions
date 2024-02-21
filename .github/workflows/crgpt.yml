@@ -15,6 +15,7 @@ jobs:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
+          ref: jira-integration
 
       - name: Code Review GPT
         uses: mattzcarey/code-review-gpt@v0.1.4-alpha
